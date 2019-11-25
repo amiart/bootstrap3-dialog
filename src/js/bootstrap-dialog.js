@@ -56,7 +56,7 @@
 
         return version;
     };
-    BootstrapDialogModal.ORIGINAL_BODY_PADDING = parseInt(($('body').css('padding-right') || 0), 10);
+    BootstrapDialogModal.ORIGINAL_BODY_STYLE = null;
     BootstrapDialogModal.METHODS_TO_OVERRIDE = {};
     BootstrapDialogModal.METHODS_TO_OVERRIDE['v3.1'] = {};
     BootstrapDialogModal.METHODS_TO_OVERRIDE['v3.2'] = {
@@ -104,7 +104,8 @@
          * @returns {undefined}
          */
         setScrollbar: function () {
-            var bodyPad = BootstrapDialogModal.ORIGINAL_BODY_PADDING;
+            BootstrapDialogModal.ORIGINAL_BODY_STYLE = this.$body.attr('style') || null;
+            var bodyPad = parseInt(this.$body.css('padding-right') || 0, 10);
             if (this.bodyIsOverflowing) {
                 this.$body.css('padding-right', bodyPad + this.scrollbarWidth);
             }
@@ -117,7 +118,7 @@
         resetScrollbar: function () {
             var openedDialogs = this.getGlobalOpenedDialogs();
             if (openedDialogs.length === 0) {
-                this.$body.css('padding-right', BootstrapDialogModal.ORIGINAL_BODY_PADDING);
+                this.$body.attr('style', BootstrapDialogModal.ORIGINAL_BODY_STYLE);
             }
         },
         /**
