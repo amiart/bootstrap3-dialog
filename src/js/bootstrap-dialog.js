@@ -10,7 +10,13 @@
  * https://github.com/nakupanda/bootstrap3-dialog
  *
  * Licensed under The MIT License.
- * ================================================ */
+ * ================================================ 
+ * 
+ * Modified by Robert Szefner
+ * Version: 1.35.4.1
+ * 
+ */
+
 (function (root, factory) {
 
     "use strict";
